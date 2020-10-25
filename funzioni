@@ -1,0 +1,46 @@
+import math
+import statistics
+
+#JAAC.m
+def JAAC(X):
+    N=X.len()
+    Y=0
+    for i in range(1, N-1, 1):
+        Y=Y+abs(X[i+1]-X[i])
+    AAC=Y/N
+    return (AAC)
+
+#jDASDV
+def jDASDV(X):
+    N=len(X)
+    Y=0
+    for i in range(1, N-1, 1):
+        Y=Y+(X[i+1]-X[i])^2
+    DASDV=math.sqrt(Y/(N-1))
+    return (DASDV)
+
+#jEMAV
+def jEMAV(X):
+    L=len(X)
+    Y=[0]*L
+    for i in range (1, L, 1):
+        if (i>=0.2*L and i<=0.8*L):
+            p=0.75
+        else:
+            p=0.5
+        Y[i]=abs(X[i]^p)
+    EMAV=statistics.mean(Y)
+    return (EMAV)
+
+#jEWL
+def jEWL(X):
+    L=len(X)
+    EWL=0
+    for i in range (2, L, 1):
+        if (i>= 0.2*L and i<=0.8*L):
+            p=0.75
+        else:
+            p=0.5
+        EWL=EWL+abs((X[i]+X[i-1])^p)
+    return(EWL)
+
